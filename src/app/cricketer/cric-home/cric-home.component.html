@@ -1,0 +1,21 @@
+<p>
+  cric-home works!
+</p>
+<p-checkbox (onChange)="changeSelection($event)" [value]="x.id" label="{{x.name}}" *ngFor="let x of cricketer_list" [(ngModel)]="selectedCricketers"></p-checkbox>
+
+<table *ngIf="table_data?.data.length>0" class="table table-striped">
+    <caption>Normal Table</caption>
+  <thead>
+    <tr>
+      <th>Years/Run</th>
+      <th *ngFor="let x of table_data?.data">{{x?.name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of table_data?.years;let i=index">
+      <td>{{row}}</td>
+      <td *ngFor="let user of table_data?.data">{{user?.runs[i]?.run}}</td>
+    </tr>
+  </tbody>
+</table>
+
