@@ -19,3 +19,24 @@
   </tbody>
 </table>
 
+<table *ngIf="summaryView?.data.length>0" class="table table-striped">
+    <caption>Summary Table</caption>
+  <thead>
+    <tr>
+      <th>Years/Run</th>
+      <th>Comment</th>
+        <th>Average</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of summaryView?.years;let i=index">
+      <td>{{row}}</td>
+        <td>
+            <span *ngIf="summaryView?.data[i]?.avg>=500">Good</span>
+            <span *ngIf="summaryView?.data[i]?.avg<500">Bad</span>
+        </td>
+        <td>{{summaryView?.data[i]?.avg}}</td>
+    </tr>
+  </tbody>
+</table>
+

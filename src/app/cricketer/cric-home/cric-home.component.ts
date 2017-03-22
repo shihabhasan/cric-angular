@@ -10,6 +10,7 @@ export class CricHomeComponent implements OnInit {
     public cricketer_list:any[] = [];
     public selectedCricketers:number[] = [];
     public table_data:any;
+    public summaryView:any;
     constructor(private cricService:CricService) { }
 
     ngOnInit() {
@@ -32,6 +33,7 @@ export class CricHomeComponent implements OnInit {
     }
 
     changeSelection(e:boolean){
+        this.getSummary();
         this.cricService.getRunsForThoseCricketers(this.selectedCricketers)
             .subscribe(
                 res=>{
@@ -39,5 +41,15 @@ export class CricHomeComponent implements OnInit {
                 }
             )
     }
+    getSummary(){
+        this.cricService.getSummary(this.selectedCricketers)
+            .subscribe(
+                res=>{
+                    this.summaryView = res;
+                }
+            )
+    }
+
+
 
 }

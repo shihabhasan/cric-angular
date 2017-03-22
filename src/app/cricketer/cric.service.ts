@@ -15,4 +15,8 @@ export class CricService {
     getRunsForThoseCricketers(d:number[]){
         return this.http.post(this.cricketerUrl+'run', d).map(res=>res.json());
     }
+
+    getSummary(d:number[]){
+        return this.http.post(this.cricketerUrl+'summary', d).map(res=>res.json());
+    }
 }
